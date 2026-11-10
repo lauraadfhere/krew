@@ -152,3 +152,14 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; }
 ::selection { background: var(--brand-red); color: #fff; }
 html[dir="rtl"] body { font-family: var(--font-body), Tahoma, Arial, sans-serif; }
 html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 { font-family: var(--font-heading), Tahoma, Arial, sans-serif; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
