@@ -29,7 +29,7 @@ export default function ContactSection({ lang, standalone = false }: { lang: Loc
         <div className="mx-auto w-full max-w-[600px]">
           <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-[11px]">
             <span aria-hidden="true" className="h-1.5 w-1.5 bg-[#CC0000]" />
-            <span>KREW</span><span className="text-white/35">/</span><span>{standalone ? "Contact" : "Let’s work together"}</span>
+            <span>KREW</span><span className="text-white/35">/</span><span>{t.contact.details.eyebrow}</span>
           </div>
 
           <Heading className="mt-4 text-balance text-[34px] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[44px] lg:text-[50px]">{t.contact.title}</Heading>
@@ -38,23 +38,23 @@ export default function ContactSection({ lang, standalone = false }: { lang: Loc
           <dl className="mt-8 grid gap-5 border-t border-white/15 pt-6 sm:grid-cols-3">
             <div className="min-w-0">
               <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="email" />Email
+                <ContactIcon type="email" />{t.contact.details.email}
               </dt>
-              <dd className="mt-1.5 break-all text-[13px] text-white sm:text-[14px]">
+              <dd className="mt-1.5 break-all text-[13px] text-white sm:text-[14px]" dir="ltr">
                 <a className="underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
               </dd>
             </div>
             <div>
               <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="phone" />Phone
+                <ContactIcon type="phone" />{t.contact.details.phone}
               </dt>
-              <dd className="mt-1.5 text-[13px] text-white sm:text-[14px]">{t.contact.phone}</dd>
+              <dd className="mt-1.5 text-[13px] text-white sm:text-[14px]" dir="ltr">{t.contact.phone}</dd>
             </div>
             <div id="location" className="scroll-mt-28">
               <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="location" />Support
+                <ContactIcon type="location" />{t.contact.details.support}
               </dt>
-              <dd className="mt-1.5 text-[13px] leading-6 text-white/80 sm:text-[14px]">Hospitals, clinics and laboratories</dd>
+              <dd className="mt-1.5 text-[13px] leading-6 text-white/80 sm:text-[14px]">{t.contact.details.supportText}</dd>
             </div>
           </dl>
 

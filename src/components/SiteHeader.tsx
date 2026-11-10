@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { dictionaries, locales, type Locale } from "@/i18n/dictionaries";
+import { localeLabels, locales, dictionaries, type Locale } from "@/i18n/dictionaries";
 import MobileMenu from "@/components/MobileMenu";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function SiteHeader({ lang }: { lang: Locale }) {
   const t = dictionaries[lang];
@@ -23,10 +24,10 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
         </a>
       </div>
       <div className="mx-auto flex min-h-[52px] max-w-[1440px] items-center gap-3 px-5 py-0 sm:px-8 lg:gap-8 lg:px-10">
-        <a href={base} aria-label="KREW home" className="mr-auto flex shrink-0 items-center gap-3">
+        <a href={base} aria-label={t.common.home} className="mr-auto flex shrink-0 items-center gap-3">
           <Image src="/brand/krew-logo.svg" alt="KREW" width={170} height={64} priority className="h-8 w-auto brightness-0 invert sm:h-9 lg:h-10" />
           <span className="hidden border-l border-white/40 pl-3.5 text-[11px] font-medium uppercase leading-tight tracking-[0.04em] text-white xl:block">
-            Medical<br /> equipment
+            {t.common.medicalEquipment}
           </span>
         </a>
 
@@ -42,36 +43,18 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
           ))}
         </nav>
 
-        <form action={`${base}/products`} role="search" className="hidden w-[230px] items-center rounded-full border border-white/90 px-4 py-2 xl:flex">
-          <label htmlFor="site-search" className="sr-only">Search</label>
-          <input id="site-search" name="q" type="search" placeholder="Search" className="w-full bg-transparent text-[16px] text-white outline-none placeholder:text-white/80" />
+        <form action={`${base}/products`} role="search" aria-label={t.common.search} className="hidden w-[230px] items-center rounded-full border border-white/90 px-4 py-2 xl:flex">
+          <label htmlFor="site-search" className="sr-only">{t.common.search}</label>
+          <input id="site-search" name="q" type="search" placeholder={t.common.search} className="w-full bg-transparent text-[16px] text-white outline-none placeholder:text-white/80" />
           <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="10.8" cy="10.8" r="6.6" /><path d="m16 16 4.2 4.2" /></svg>
         </form>
 
         <div className="flex items-center gap-1.5 sm:gap-2.5">
-          <details className="group relative">
-            <summary aria-label="Change language" className="grid h-8 w-8 cursor-pointer list-none place-items-center transition-colors hover:text-white/75 [&::-webkit-details-marker]:hidden">
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" /></svg>
-            </summary>
-            <ul className="absolute right-0 top-full z-40 mt-[14px] min-w-[170px] border border-zinc-200 bg-white py-2 text-[15px] text-zinc-700 shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
-              {locales.map((code) => (
-                <li key={code}>
-                  <a
-                    href={`/${code}`}
-                    lang={code}
-                    aria-current={code === lang ? "page" : undefined}
-                    className={code === lang ? "block bg-zinc-100 px-5 py-2.5 font-bold text-zinc-900" : "block px-5 py-2.5 text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-950"}
-                  >
-                    {code === "en" ? "English" : code === "fr" ? "Français" : "العربية"}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
+          <LanguageSwitcher lang={lang} label={t.common.changeLanguage} />
           <a
             href={`${base}/contact#location`}
-            aria-label="Find KREW contact details"
-            title="Location and contact details"
+            aria-label={t.common.location}
+            title={t.common.location}
             className="hidden h-8 w-8 place-items-center text-white transition-colors hover:text-white/75 lg:grid"
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[19px] w-[19px]" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -81,7 +64,8 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
           </a>
           <MobileMenu
             items={navItems}
-            languages={locales.map((code) => ({ code, href: `/${code}`, current: code === lang }))}
+            languages={locales.map((code) => ({ code, label: localeLabels[code], current: code === lang }))}
+            languageLabel={t.common.changeLanguage}
             cta={{ label: t.hero.secondary, href: `${base}/contact` }}
           />
         </div>

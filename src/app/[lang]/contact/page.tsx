@@ -23,7 +23,7 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
     <main dir={dir} className="bg-[#f2f2f2] px-5 py-10 text-zinc-900 sm:px-8 sm:py-16 lg:px-12">
       <div className="mx-auto max-w-[980px]">
         <header className="mb-9 sm:mb-12">
-          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#CC0000]">KREW / CONTACT</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#CC0000]">{t.contact.details.eyebrow}</p>
           <h1 className="mt-2 text-[32px] font-extralight leading-[1.1] tracking-[-0.02em] sm:text-[46px]">{t.contact.title}</h1>
           <p className="mt-3 max-w-2xl text-[14px] leading-6 text-zinc-600 sm:text-[15px]">{t.contact.text}</p>
         </header>
@@ -33,13 +33,13 @@ export default async function ContactPage({ params }: { params: Promise<{ lang: 
             <dl>
               <div className="border-b border-[#e3e3e3] px-5 py-5 sm:px-6">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.email}</dt>
-                <dd className="mt-1.5 break-all text-[15px] text-zinc-900">
+                <dd className="mt-1.5 break-all text-[15px] text-zinc-900" dir="ltr">
                   <a className="underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-[#CC0000]" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
                 </dd>
               </div>
               <div className="border-b border-[#e3e3e3] px-5 py-5 sm:px-6">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.phone}</dt>
-                <dd className="mt-1.5 text-[15px] text-zinc-900">{t.contact.phone}</dd>
+                <dd className="mt-1.5 text-[15px] text-zinc-900" dir="ltr">{t.contact.phone}</dd>
               </div>
               <div id="location" className="px-5 py-5 sm:px-6 scroll-mt-28">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.location}</dt>

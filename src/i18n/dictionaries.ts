@@ -17,12 +17,19 @@ export type Dictionary = {
     addToQuote: string;
     items: { name: string; category: string; description: string }[];
   };
-  services: { title: string; items: { title: string; text: string }[] };
+  services: { title: string; eyebrow: string; items: { title: string; text: string }[] };
   contact: {
     title: string;
     text: string;
     email: string;
     phone: string;
+    details: {
+      eyebrow: string;
+      email: string;
+      phone: string;
+      support: string;
+      supportText: string;
+    };
     form: {
       heading: string;
       name: string;
@@ -35,6 +42,13 @@ export type Dictionary = {
     };
   };
   about: { title: string; text: string };
+  common: {
+    medicalEquipment: string;
+    search: string;
+    changeLanguage: string;
+    location: string;
+    home: string;
+  };
   footer: string;
 };
 
@@ -63,6 +77,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     services: {
       title: "Our services",
+      eyebrow: "KREW / SUPPORT",
       items: [
         { title: "Installation", text: "On-site installation and calibration by trained technicians." },
         { title: "Maintenance", text: "Preventive maintenance plans that keep equipment running." },
@@ -74,6 +89,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       text: "Tell us what your facility needs and we will prepare a quote.",
       email: "sales@krew.example",
       phone: "+1 000 000 0000",
+      details: {
+        eyebrow: "Let’s work together",
+        email: "Email",
+        phone: "Phone",
+        support: "Support",
+        supportText: "Hospitals, clinics and laboratories",
+      },
       form: {
         heading: "Request a quote",
         name: "Full name",
@@ -88,6 +110,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     about: {
       title: "About KREW",
       text: "KREW supplies hospitals, clinics and laboratories with certified medical devices and reliable hardware equipment. From choosing the right device to installation, maintenance and training, our team helps healthcare facilities build dependable equipment programs around the needs of their people.",
+    },
+    common: {
+      medicalEquipment: "Medical equipment",
+      search: "Search",
+      changeLanguage: "Change language",
+      location: "Location and contact details",
+      home: "KREW home",
     },
     footer: "© KREW. All rights reserved.",
   },
@@ -115,6 +144,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     services: {
       title: "Nos services",
+      eyebrow: "KREW / ASSISTANCE",
       items: [
         { title: "Installation", text: "Installation et étalonnage sur site par des techniciens formés." },
         { title: "Maintenance", text: "Plans de maintenance préventive pour garder vos équipements opérationnels." },
@@ -126,6 +156,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       text: "Indiquez-nous les besoins de votre établissement et nous préparerons un devis.",
       email: "sales@krew.example",
       phone: "+1 000 000 0000",
+      details: {
+        eyebrow: "Travaillons ensemble",
+        email: "E-mail",
+        phone: "Téléphone",
+        support: "Assistance",
+        supportText: "Hôpitaux, cliniques et laboratoires",
+      },
       form: {
         heading: "Demander un devis",
         name: "Nom complet",
@@ -140,6 +177,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     about: {
       title: "À propos de KREW",
       text: "KREW fournit aux hôpitaux, cliniques et laboratoires des dispositifs médicaux certifiés et des équipements matériels fiables. Du choix de l'appareil adapté à l'installation, la maintenance et la formation, notre équipe aide les établissements de santé à bâtir des programmes d'équipement fiables.",
+    },
+    common: {
+      medicalEquipment: "Équipement médical",
+      search: "Rechercher",
+      changeLanguage: "Changer de langue",
+      location: "Localisation et coordonnées",
+      home: "Accueil KREW",
     },
     footer: "© KREW. Tous droits réservés.",
   },
@@ -167,6 +211,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     services: {
       title: "خدماتنا",
+      eyebrow: "KREW / الدعم",
       items: [
         { title: "التركيب", text: "تركيب ومعايرة في الموقع بواسطة فنيين مدربين." },
         { title: "الصيانة", text: "خطط صيانة وقائية تحافظ على عمل المعدات." },
@@ -178,6 +223,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
       text: "أخبرنا باحتياجات منشأتك وسنعد لك عرض سعر.",
       email: "sales@krew.example",
       phone: "+1 000 000 0000",
+      details: {
+        eyebrow: "لنعمل معًا",
+        email: "البريد الإلكتروني",
+        phone: "الهاتف",
+        support: "الدعم",
+        supportText: "المستشفيات والعيادات والمختبرات",
+      },
       form: {
         heading: "طلب عرض سعر",
         name: "الاسم الكامل",
@@ -192,6 +244,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     about: {
       title: "من نحن",
       text: "توفّر KREW للمستشفيات والعيادات والمختبرات أجهزة طبية معتمدة ومعدات عتادية موثوقة. من اختيار الجهاز المناسب إلى التركيب والصيانة والتدريب، يساعد فريقنا المنشآت الصحية على بناء برامج معدات موثوقة.",
+    },
+    common: {
+      medicalEquipment: "معدات طبية",
+      search: "بحث",
+      changeLanguage: "تغيير اللغة",
+      location: "الموقع وبيانات الاتصال",
+      home: "الصفحة الرئيسية KREW",
     },
     footer: "© KREW. جميع الحقوق محفوظة.",
   },

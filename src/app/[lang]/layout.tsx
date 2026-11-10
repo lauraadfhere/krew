@@ -15,7 +15,7 @@ export default async function LangLayout({
   const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
-    <div dir={dir} className="min-h-screen bg-white text-black">
+    <div lang={lang} dir={dir} className="min-h-screen bg-white text-black">
       <SiteHeader lang={lang} />
       {children}
       <ScrollButtons />

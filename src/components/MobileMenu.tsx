@@ -1,20 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Link = { label: string; href: string };
-type LanguageLink = { code: string; href: string; current: boolean };
+type LanguageLink = { code: string; label: string; current: boolean };
 
 export default function MobileMenu({
   items,
   languages,
+  languageLabel,
   cta,
 }: {
   items: Link[];
   languages: LanguageLink[];
+  languageLabel: string;
   cta: Link;
 }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname() ?? "";
+  const rest = pathname.split("/").slice(2).join("/");
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
@@ -92,7 +97,7 @@ export default function MobileMenu({
               <summary className="flex cursor-pointer list-none items-center justify-between text-[15px] font-medium text-black [&::-webkit-details-marker]:hidden">
                 <span className="flex items-center gap-2">
                   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" /></svg>
-                  Language
+                  {languageLabel}
                 </span>
                 <span aria-hidden="true" className="text-black/50 transition-transform group-open:rotate-180">⌄</span>
               </summary>
@@ -100,7 +105,7 @@ export default function MobileMenu({
                 {languages.map((language) => (
                   <li key={language.code}>
                     <a
-                      href={language.href}
+                      href={rest ? `/${language.code}/${rest}` : `/${language.code}`}
                       lang={language.code}
                       aria-current={language.current ? "page" : undefined}
                       className={
@@ -109,7 +114,7 @@ export default function MobileMenu({
                           : "block py-2.5 text-black transition-colors hover:text-[#CC0000]"
                       }
                     >
-                      {language.code === "en" ? "English" : language.code === "fr" ? "Français" : "العربية"}
+                      {language.label}
                     </a>
                   </li>
                 ))}
