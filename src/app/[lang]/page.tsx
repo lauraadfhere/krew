@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { dictionaries, isLocale, locales } from "@/i18n/dictionaries";
 import HeroSlider from "@/components/HeroSlider";
-import ContactForm from "@/components/ContactForm";
+import ContactSection from "@/components/ContactSection";
 
 import NewsletterSection from "@/components/NewsletterSection";
 import StatsBar from "@/components/StatsBar";
@@ -82,46 +82,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          CONTACT SECTION
-          ════════════════════════════════════════════ */}
-      <section id="contact" className="relative overflow-hidden bg-[#2a090b] text-white">
-        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10 lg:py-20">
-          <div>
-            <p className="flex items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-[11px]">
-              <span aria-hidden="true" className="h-1.5 w-1.5 bg-red-200" />
-              LET&apos;S WORK TOGETHER
-            </p>
-            <h2 className="mt-3 text-balance text-[30px] font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-[36px] lg:text-[40px]">{t.contact.title}</h2>
-            <p className="mt-3 text-pretty text-[15px] leading-7 text-white/70">{t.contact.text}</p>
-
-            <dl className="mt-7 space-y-4 border-t border-white/15 pt-6 text-sm">
-              <div className="flex items-start gap-3">
-                <span aria-hidden="true" className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center border border-white/25 text-[11px]">@</span>
-                <div>
-                  <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">Email</dt>
-                  <dd>
-                    <a className="font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white" href={`mailto:${t.contact.email}`}>
-                      {t.contact.email}
-                    </a>
-                  </dd>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span aria-hidden="true" className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center border border-white/25 text-[11px]">☎</span>
-                <div>
-                  <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">Phone</dt>
-                  <dd className="font-medium text-white">{t.contact.phone}</dd>
-                </div>
-              </div>
-            </dl>
-          </div>
-
-          <div>
-            <ContactForm labels={t.contact.form} email={t.contact.email} />
-          </div>
-        </div>
-      </section>
+      <ContactSection lang={lang} />
 
       {/* ════════════════════════════════════════════
           NEWSLETTER — OMRON-style dark blue subscription

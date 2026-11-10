@@ -1,39 +1,58 @@
 import { notFound } from "next/navigation";
-import { dictionaries, isLocale, locales } from "@/i18n/dictionaries";
-import ContactForm from "@/components/ContactForm";
+import { isLocale, locales, dictionaries } from "@/i18n/dictionaries";
+import ContactPageForm from "@/components/ContactPageForm";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+const labels = {
+  en: { email: "Email", phone: "Phone", location: "Location", support: "Hospitals, clinics and laboratories", coverage: "Contact us for regional coverage." },
+  fr: { email: "E-mail", phone: "Téléphone", location: "Localisation", support: "Hôpitaux, cliniques et laboratoires", coverage: "Contactez-nous pour notre couverture régionale." },
+  ar: { email: "البريد الإلكتروني", phone: "الهاتف", location: "الموقع", support: "المستشفيات والعيادات والمختبرات", coverage: "تواصل معنا لمعرفة التغطية الإقليمية." },
+};
+
 export default async function ContactPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const t = dictionaries[lang];
+  const l = labels[lang];
+  const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
-    <main className="bg-[#2a090b] text-white">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10 lg:py-20">
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-[11px]">LET&apos;S WORK TOGETHER</p>
-          <h1 className="mt-3 text-balance text-[30px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[36px] lg:text-[40px]">{t.contact.title}</h1>
-          <p className="mt-3 text-pretty text-[15px] leading-7 text-white/70">{t.contact.text}</p>
-          <dl className="mt-7 space-y-4 border-t border-white/15 pt-6 text-sm">
-            <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">Email</dt>
-              <dd>
-                <a className="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white" href={`mailto:${t.contact.email}`}>
-                  {t.contact.email}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">Phone</dt>
-              <dd className="font-medium text-white">{t.contact.phone}</dd>
-            </div>
-          </dl>
+    <main dir={dir} className="bg-[#f2f2f2] px-5 py-10 text-zinc-900 sm:px-8 sm:py-16 lg:px-12">
+      <div className="mx-auto max-w-[980px]">
+        <header className="mb-9 sm:mb-12">
+          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#CC0000]">KREW / CONTACT</p>
+          <h1 className="mt-2 text-[32px] font-extralight leading-[1.1] tracking-[-0.02em] sm:text-[46px]">{t.contact.title}</h1>
+          <p className="mt-3 max-w-2xl text-[14px] leading-6 text-zinc-600 sm:text-[15px]">{t.contact.text}</p>
+        </header>
+
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-9">
+          <aside className="w-full max-w-[600px] border-t-2 border-zinc-900 bg-white lg:w-[260px] lg:shrink-0">
+            <dl>
+              <div className="border-b border-[#e3e3e3] px-5 py-5 sm:px-6">
+                <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.email}</dt>
+                <dd className="mt-1.5 break-all text-[15px] text-zinc-900">
+                  <a className="underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-[#CC0000]" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
+                </dd>
+              </div>
+              <div className="border-b border-[#e3e3e3] px-5 py-5 sm:px-6">
+                <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.phone}</dt>
+                <dd className="mt-1.5 text-[15px] text-zinc-900">{t.contact.phone}</dd>
+              </div>
+              <div id="location" className="px-5 py-5 sm:px-6 scroll-mt-28">
+                <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">{l.location}</dt>
+                <dd className="mt-1.5 text-[14px] leading-6 text-zinc-800">{l.support}</dd>
+                <dd className="mt-1 text-[13px] leading-6 text-zinc-500">{l.coverage}</dd>
+              </div>
+            </dl>
+          </aside>
+
+          <div className="w-full max-w-[600px] bg-white px-5 py-7 sm:px-8 sm:py-9 lg:w-[600px] lg:shrink-0">
+            <ContactPageForm lang={lang} email={t.contact.email} />
+          </div>
         </div>
-        <ContactForm labels={t.contact.form} email={t.contact.email} />
       </div>
     </main>
   );
