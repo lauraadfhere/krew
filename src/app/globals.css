@@ -153,6 +153,21 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; }
 html[dir="rtl"] body { font-family: var(--font-body), Tahoma, Arial, sans-serif; }
 html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 { font-family: var(--font-heading), Tahoma, Arial, sans-serif; }
 
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hw-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawStroke 1.6s ease-out forwards;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

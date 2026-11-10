@@ -34,6 +34,7 @@ export type Dictionary = {
       sent: string;
     };
   };
+  about: { title: string; text: string };
   footer: string;
 };
 
@@ -84,6 +85,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         sent: "Your email app should open with the request ready to send.",
       },
     },
+    about: {
+      title: "About KREW",
+      text: "KREW supplies hospitals, clinics and laboratories with certified medical devices and reliable hardware equipment. From choosing the right device to installation, maintenance and training, our team helps healthcare facilities build dependable equipment programs around the needs of their people.",
+    },
     footer: "© KREW. All rights reserved.",
   },
   fr: {
@@ -132,6 +137,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         sent: "Votre application e-mail devrait s'ouvrir avec la demande prête à envoyer.",
       },
     },
+    about: {
+      title: "À propos de KREW",
+      text: "KREW fournit aux hôpitaux, cliniques et laboratoires des dispositifs médicaux certifiés et des équipements matériels fiables. Du choix de l'appareil adapté à l'installation, la maintenance et la formation, notre équipe aide les établissements de santé à bâtir des programmes d'équipement fiables.",
+    },
     footer: "© KREW. Tous droits réservés.",
   },
   ar: {
@@ -179,6 +188,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         note: "نرد خلال يوم عمل واحد.",
         sent: "سيُفتح تطبيق البريد لديك مع الطلب جاهزًا للإرسال.",
       },
+    },
+    about: {
+      title: "من نحن",
+      text: "توفّر KREW للمستشفيات والعيادات والمختبرات أجهزة طبية معتمدة ومعدات عتادية موثوقة. من اختيار الجهاز المناسب إلى التركيب والصيانة والتدريب، يساعد فريقنا المنشآت الصحية على بناء برامج معدات موثوقة.",
     },
     footer: "© KREW. جميع الحقوق محفوظة.",
   },

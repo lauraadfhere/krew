@@ -44,7 +44,10 @@ export default function ContactForm({ labels, email }: { labels: Labels; email: 
     >
       <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[#CC0000]" />
 
-      <h3 className="text-[19px] font-semibold tracking-[-0.01em] text-black sm:text-[22px]">{labels.heading}</h3>
+      <div className="flex items-center gap-3">
+        <span aria-hidden="true" className="font-serif text-[26px] italic leading-none text-[#CC0000]">01</span>
+        <h3 className="text-[19px] font-semibold tracking-[-0.01em] text-black sm:text-[22px]">{labels.heading}</h3>
+      </div>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div>
@@ -81,7 +84,7 @@ export default function ContactForm({ labels, email }: { labels: Labels; email: 
       <div className="mt-6 flex flex-col gap-3">
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center gap-2.5 bg-[#CC0000] px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#a60000] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000] sm:w-auto sm:self-start"
+          className="inline-flex w-full items-center justify-between bg-[#CC0000] px-6 py-4 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#a60000] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#CC0000]"
         >
           {labels.submit}
           <span aria-hidden="true" className="text-[15px] leading-none">→</span>

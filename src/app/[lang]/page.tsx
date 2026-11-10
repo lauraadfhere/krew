@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { dictionaries, isLocale, locales } from "@/i18n/dictionaries";
 import HeroSlider from "@/components/HeroSlider";
 import ContactForm from "@/components/ContactForm";
-import MobileMenu from "@/components/MobileMenu";
+
 import NewsletterSection from "@/components/NewsletterSection";
 import StatsBar from "@/components/StatsBar";
 import FeaturedCTA from "@/components/FeaturedCTA";
@@ -18,112 +18,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const t = dictionaries[lang];
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
-    <div dir={dir} className="min-h-screen bg-white text-black">
-      {/* ════════════════════════════════════════════
-          HEADER
-          ════════════════════════════════════════════ */}
-      <header className="relative z-30 bg-[#CC0000] text-white">
-        <div className="mx-auto flex h-7 max-w-[1440px] items-center justify-end gap-7 px-5 text-[14px] sm:px-8 lg:px-10" style={{ fontFamily: "'DIN Pro Medium', 'DIN Pro', system-ui, sans-serif" }}>
-          <a href={`/${lang}#contact`} className="hidden font-bold text-white transition-colors hover:text-white/75 sm:block">
-            {t.hero.secondary}
-          </a>
-          <a href={`/${lang}#services`} className="hidden font-normal text-white transition-colors hover:text-white/75 sm:block">
-            {t.nav.services}
-          </a>
-        </div>
-        <div className="mx-auto flex min-h-[52px] max-w-[1440px] items-center gap-3 px-5 py-0 sm:px-8 lg:gap-8 lg:px-10">
-          <a href={`/${lang}`} aria-label="KREW home" className="mr-auto flex shrink-0 items-center gap-3">
-            <Image src="/brand/krew-logo.svg" alt="KREW" width={170} height={64} priority className="h-8 w-auto brightness-0 invert sm:h-9 lg:h-10" />
-            <span className="hidden border-l border-white/40 pl-3.5 text-[11px] font-medium uppercase leading-tight tracking-[0.04em] text-white xl:block">
-              Medical<br /> equipment
-            </span>
-          </a>
-
-          <nav
-            aria-label="Main navigation"
-            className="hidden items-center gap-9 text-[17px] font-normal text-white lg:flex xl:gap-11"
-            style={{ fontFamily: "'DIN Pro Medium', 'DIN Pro', sans-serif" }}
-          >
-            <a href="#products" className="group flex shrink-0 items-center gap-2 whitespace-nowrap transition-colors hover:text-white/75">
-              {t.nav.products}
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m3 6 5 5 5-5" /></svg>
-            </a>
-            <a href="#services" className="whitespace-nowrap transition-colors hover:text-white/75">{t.nav.services}</a>
-            <a href="#about" className="whitespace-nowrap transition-colors hover:text-white/75">{t.nav.about}</a>
-            <a href="#contact" className="whitespace-nowrap transition-colors hover:text-white/75">{t.nav.contact}</a>
-          </nav>
-
-          <form action={`/${lang}#products`} role="search" className="hidden w-[230px] items-center rounded-full border border-white/90 px-4 py-2 xl:flex">
-            <label htmlFor="site-search" className="sr-only">Search</label>
-            <input
-              id="site-search"
-              name="q"
-              type="search"
-              placeholder="Search"
-              className="w-full bg-transparent text-[16px] text-white outline-none placeholder:text-white/80"
-            />
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="10.8" cy="10.8" r="6.6" /><path d="m16 16 4.2 4.2" /></svg>
-          </form>
-
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
-          <a
-            href="#contact"
-            aria-label="Find a store"
-            className="hidden h-8 w-8 place-items-center transition-colors hover:text-white/75 lg:grid"
-          >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[20px] w-[20px]" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11Z" /><circle cx="12" cy="10" r="2.4" /></svg>
-          </a>
-          <a
-            href="#products"
-            aria-label="Search equipment"
-            className="grid h-8 w-8 place-items-center transition-colors hover:text-white/75 xl:hidden"
-          >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[20px] w-[20px]" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="10.8" cy="10.8" r="6.6" /><path d="m16 16 4.2 4.2" /></svg>
-          </a>
-          <span aria-hidden="true" className="hidden h-5 border-l border-white/40 sm:block" />
-          <details className="group relative">
-                  <summary
-                    aria-label="Change language"
-                    className="grid h-8 w-8 cursor-pointer list-none place-items-center transition-colors hover:text-white/75 [&::-webkit-details-marker]:hidden"
-                  >
-                    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" /></svg>
-                  </summary>
-                  <span aria-hidden="true" className="absolute right-3 top-full z-40 mt-[5px] h-0 w-0 border-x-[8px] border-b-[9px] border-x-transparent border-b-[#CC0000]" />
-                  <ul className="absolute right-0 top-full z-40 mt-[14px] min-w-[170px] bg-[#CC0000] py-2 text-[15px] text-white shadow-[0_12px_24px_rgba(0,0,0,0.2)]">
-                    {locales.map((code) => (
-                      <li key={code}>
-                        <a
-                          href={`/${code}`}
-                          lang={code}
-                          aria-current={code === lang ? "page" : undefined}
-                          className={
-                            code === lang
-                              ? "block px-5 py-2.5 font-bold text-white"
-                              : "block px-5 py-2.5 text-white transition-colors hover:bg-white/10 hover:text-white"
-                          }
-                        >
-                          {code === "en" ? "English" : code === "fr" ? "Français" : "العربية"}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-                <MobileMenu
-                  items={[
-                    { label: t.nav.products, href: "#products" },
-                    { label: t.nav.services, href: "#services" },
-                    { label: t.nav.about, href: "#about" },
-                    { label: t.nav.contact, href: "#contact" },
-                  ]}
-                  languages={locales.map((code) => ({ code, href: `/${code}`, current: code === lang }))}
-                  cta={{ label: t.hero.secondary, href: "#contact" }}
-                />
-              </div>
-        </div>
-      </header>
+    <>
 
       {/* ════════════════════════════════════════════
           HERO — with hand-drawn white medical art on right
@@ -189,11 +86,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           CONTACT SECTION
           ════════════════════════════════════════════ */}
       <section id="contact" className="relative overflow-hidden bg-[#2a090b] text-white">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 bg-[#faf8f7] lg:block" />
-        <div aria-hidden="true" className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full border border-white/10" />
-
-        <div className="relative mx-auto grid max-w-[1440px] gap-9 px-5 py-14 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-10 lg:py-16">
-          <div className="max-w-[420px]">
+        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10 lg:py-20">
+          <div>
             <p className="flex items-center gap-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-[11px]">
               <span aria-hidden="true" className="h-1.5 w-1.5 bg-red-200" />
               LET&apos;S WORK TOGETHER
@@ -223,7 +117,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </dl>
           </div>
 
-          <div className="relative lg:pl-4">
+          <div>
             <ContactForm labels={t.contact.form} email={t.contact.email} />
           </div>
         </div>
@@ -245,7 +139,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <ul className="mt-5 space-y-3 text-[14px] font-normal text-white/85">
                 {t.products.items.map((item) => (
                   <li key={item.name}>
-                    <a href="#products" className="transition-colors hover:text-white hover:underline">{item.name}</a>
+                    <a href={`/${lang}/products`} className="transition-colors hover:text-white hover:underline">{item.name}</a>
                   </li>
                 ))}
               </ul>
@@ -254,10 +148,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <div>
               <h3 className="text-[15px] font-medium text-white">Accessories</h3>
               <ul className="mt-5 space-y-3 text-[14px] font-normal text-white/85">
-                <li><a href="#products" className="transition-colors hover:text-white hover:underline">Device accessories</a></li>
-                <li><a href="#products" className="transition-colors hover:text-white hover:underline">Replacement parts</a></li>
-                <li><a href="#products" className="transition-colors hover:text-white hover:underline">Cables &amp; connectors</a></li>
-                <li><a href="#products" className="transition-colors hover:text-white hover:underline">Carrying cases</a></li>
+                <li><a href={`/${lang}/products`} className="transition-colors hover:text-white hover:underline">Device accessories</a></li>
+                <li><a href={`/${lang}/products`} className="transition-colors hover:text-white hover:underline">Replacement parts</a></li>
+                <li><a href={`/${lang}/products`} className="transition-colors hover:text-white hover:underline">Cables &amp; connectors</a></li>
+                <li><a href={`/${lang}/products`} className="transition-colors hover:text-white hover:underline">Carrying cases</a></li>
               </ul>
             </div>
 
@@ -274,7 +168,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <div>
               <h3 className="text-[15px] font-medium text-white">Support</h3>
               <ul className="mt-5 space-y-3 text-[14px] font-normal text-white/85">
-                <li><a href="#contact" className="transition-colors hover:text-white hover:underline">Customer support</a></li>
+                <li><a href={`/${lang}/contact`} className="transition-colors hover:text-white hover:underline">Customer support</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">Where to buy</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">Registration</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">Warranty</a></li>
@@ -285,7 +179,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <div>
               <h3 className="text-[15px] font-medium text-white">Why KREW</h3>
               <ul className="mt-5 space-y-3 text-[14px] font-normal text-white/85">
-                <li><a href="#about" className="transition-colors hover:text-white hover:underline">About us</a></li>
+                <li><a href={`/${lang}/about`} className="transition-colors hover:text-white hover:underline">About us</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">KREW connect app</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">Going for Zero</a></li>
                 <li><a href="#" className="transition-colors hover:text-white hover:underline">Clinical validation</a></li>
@@ -347,6 +241,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </footer>
       <CookieBanner />
-    </div>
+    </>
   );
 }
