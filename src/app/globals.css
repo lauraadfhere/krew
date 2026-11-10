@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-400-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-500-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-600-SemiBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-700-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-800-ExtraBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro";
+  src: url("/D-DIN-PRO-900-Heavy.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Pro Light";
+  src: url("/Fonts/DINPro-Light-D1MhiFGc.woff2") format("woff2"), url("/Fonts/DINPro-Light-D1MhiFGc.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DIN Pro Medium";
+  src: url("/Fonts/DINPro-Medium-VmV559on.woff2") format("woff2"), url("/Fonts/DINPro-Medium-VmV559on.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "KREW Inter";
+  src: url("/levoyage_fonts/levoyage_fonts/Inter/Inter-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Inter";
+  src: url("/levoyage_fonts/levoyage_fonts/Inter/Inter-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Inter";
+  src: url("/levoyage_fonts/levoyage_fonts/Inter/Inter-SemiBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Inter";
+  src: url("/levoyage_fonts/levoyage_fonts/Inter/Inter-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Poppins";
+  src: url("/levoyage_fonts/levoyage_fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Poppins";
+  src: url("/levoyage_fonts/levoyage_fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Lora";
+  src: url("/levoyage_fonts/levoyage_fonts/Lora/Lora-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KREW Lora";
+  src: url("/levoyage_fonts/levoyage_fonts/Lora/Lora-Italic-Variable.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --brand-red: #cc0000;
+  --brand-dark: #2a090b;
+  --font-heading: "DIN Pro Light", "DIN Pro", Arial, sans-serif;
+  --font-body: "DIN Pro Medium", "DIN Pro", Arial, sans-serif;
+  --font-serif: "KREW Lora", Georgia, serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-red: var(--brand-red);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-serif: var(--font-serif);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+  font-family: var(--font-body), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Arial, sans-serif;
+  letter-spacing: -0.015em;
+  text-rendering: optimizeLegibility;
+}
+button, input, select, textarea { font: inherit; letter-spacing: inherit; }
+::selection { background: var(--brand-red); color: #fff; }
+html[dir="rtl"] body { font-family: var(--font-body), Tahoma, Arial, sans-serif; }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 { font-family: var(--font-heading), Tahoma, Arial, sans-serif; }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -30 420 160" width="1680" height="640">
+<g fill="#CC0000">
+<rect x="0" y="0" width="16" height="100"/>
+<polygon points="16,56 52,0 61,0 16,67"/>
+<polygon points="26,52 41,52 67,100 49,100"/>
+<g transform="translate(82 0)">
+<path fill-rule="evenodd" d="M0 0 H38 Q62 0 62 27 Q62 54 38 54 H0 Z M16 8 H36 Q46 8 46 27 Q46 46 36 46 H16 Z"/>
+<polygon points="30,54 46,54 66,100 48,100"/>
+</g>
+<g transform="translate(166 0)">
+<rect x="0" y="0" width="16" height="100"/>
+<rect x="16" y="0" width="38" height="8"/>
+<rect x="16" y="46" width="30" height="7"/>
+<rect x="16" y="92" width="44" height="8"/>
+</g>
+<g transform="translate(240 0)">
+<polygon points="0,0 14,0 36,100 22,100"/>
+<polygon points="26,100 36,100 60,0 54,0"/>
+<polygon points="50,0 64,0 92,100 78,100"/>
+<polygon points="80,100 90,100 114,0 108,0"/>
+</g>
+<circle cx="354" cy="94" r="6"/>
+</g>
+</svg>
