@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -11,11 +12,17 @@ export default function MobileMenu({
   languages,
   languageLabel,
   cta,
+  homeHref,
+  homeLabel,
+  closeLabel,
 }: {
   items: Link[];
   languages: LanguageLink[];
   languageLabel: string;
   cta: Link;
+  homeHref: string;
+  homeLabel: string;
+  closeLabel: string;
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname() ?? "";
@@ -36,101 +43,117 @@ export default function MobileMenu({
     return () => media.removeEventListener("change", onChange);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
   return (
     <div className="lg:hidden">
       <button
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-controls="mobile-menu"
-        aria-label={open ? "Close menu" : "Open menu"}
-        className="group relative ml-1 grid h-10 w-10 place-items-center overflow-hidden text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        aria-label="Open menu"
+        className="group relative ms-1 grid h-10 w-10 place-items-center overflow-hidden text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
-        <span
-          aria-hidden="true"
-          className={`absolute right-0 top-0 h-2 w-2 transition-colors duration-300 ${open ? "bg-[#CC0000]" : "bg-[#CC0000] group-hover:bg-[#a60000]"}`}
-        />
+        <span aria-hidden="true" className="absolute right-0 top-0 h-2 w-2 bg-[#CC0000] group-hover:bg-[#a60000]" />
 
         <span className="relative block h-[15px] w-[20px]">
-          <span
-            className={`absolute left-0 block h-[1.5px] bg-current transition-all duration-300 ease-out ${
-              open ? "top-1/2 w-full -translate-y-1/2 rotate-45" : "top-0 w-full group-hover:w-[70%]"
-            }`}
-          />
-          <span
-            className={`absolute left-0 top-1/2 block h-[1.5px] -translate-y-1/2 bg-current transition-all duration-300 ease-out ${
-              open ? "w-full opacity-0" : "w-[60%] group-hover:w-full"
-            }`}
-          />
-          <span
-            className={`absolute left-0 block h-[1.5px] bg-current transition-all duration-300 ease-out ${
-              open ? "top-1/2 w-full -translate-y-1/2 -rotate-45" : "bottom-0 w-full group-hover:w-[70%]"
-            }`}
-          />
+          <span className="absolute left-0 top-0 block h-[1.5px] w-full bg-current transition-all duration-300 ease-out group-hover:w-[70%]" />
+          <span className="absolute left-0 top-1/2 block h-[1.5px] w-[60%] -translate-y-1/2 bg-current transition-all duration-300 ease-out group-hover:w-full" />
+          <span className="absolute bottom-0 left-0 block h-[1.5px] w-full bg-current transition-all duration-300 ease-out group-hover:w-[70%]" />
         </span>
       </button>
 
       {open && (
-        <div
-          id="mobile-menu"
-          className="absolute inset-x-0 top-full border-t border-black/15 bg-white text-black shadow-[0_24px_40px_rgba(0,0,0,0.15)]"
-        >
-          <nav aria-label="Mobile navigation" className="mx-auto max-w-[1440px] px-5 pb-5 pt-2 sm:px-8">
-            <ul className="divide-y divide-black/10">
-              {items.map((item, index) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between py-3.5 text-[15px] font-medium tracking-[-0.01em] text-black transition-colors hover:text-[#CC0000]"
-                  >
-                    {item.label}
-                    <span aria-hidden="true" className="text-[10px] tabular-nums tracking-[0.1em] text-black/40">
-                      0{index + 1}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+        <>
+          <button
+            type="button"
+            aria-label={closeLabel}
+            tabIndex={-1}
+            onClick={() => setOpen(false)}
+            className="krew-backdrop fixed inset-0 z-40 cursor-default bg-black/45 backdrop-blur-[1px]"
+          />
 
-            <details className="group mt-4 border-t border-black/15 pt-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-[15px] font-medium text-black [&::-webkit-details-marker]:hidden">
-                <span className="flex items-center gap-2">
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" /></svg>
-                  {languageLabel}
-                </span>
-                <span aria-hidden="true" className="text-black/50 transition-transform group-open:rotate-180">⌄</span>
-              </summary>
-              <ul className="mt-2 divide-y divide-black/10">
-                {languages.map((language) => (
-                  <li key={language.code}>
+          <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+            className="krew-drawer fixed inset-y-0 end-0 z-50 flex w-full max-w-[430px] flex-col bg-[#CC0000] text-white shadow-[-24px_0_60px_rgba(0,0,0,0.28)]"
+          >
+            <div className="flex items-center justify-between border-b border-white/25 px-5 py-4 sm:px-7">
+              <a href={homeHref} onClick={() => setOpen(false)} aria-label={homeLabel} className="flex items-center">
+                <Image src="/brand/krew-logo-final.png" alt="KREW" width={2172} height={724} className="h-7 w-auto" />
+              </a>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label={closeLabel}
+                className="-me-2 grid h-10 w-10 place-items-center text-white transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+                  <path d="M5 5l14 14M19 5 5 19" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-5 pb-6 pt-2 sm:px-7">
+              <ul className="divide-y divide-white/25">
+                {items.map((item, index) => (
+                  <li key={item.href}>
                     <a
-                      href={rest ? `/${language.code}/${rest}` : `/${language.code}`}
-                      lang={language.code}
-                      aria-current={language.current ? "page" : undefined}
-                      className={
-                        language.current
-                          ? "block py-2.5 font-medium text-[#CC0000]"
-                          : "block py-2.5 text-black transition-colors hover:text-[#CC0000]"
-                      }
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-baseline justify-between py-4 text-[21px] font-medium leading-none tracking-[-0.01em] text-white transition-opacity hover:opacity-70 sm:text-[23px]"
                     >
-                      {language.label}
+                      {item.label}
+                      <span aria-hidden="true" className="text-[10px] font-normal tabular-nums tracking-[0.14em] text-white/55">
+                        0{index + 1}
+                      </span>
                     </a>
                   </li>
                 ))}
               </ul>
-            </details>
 
-            <a
-              href={cta.href}
-              onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-between bg-[#CC0000] px-4 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-[#a60000]"
-            >
-              {cta.label}
-              <span aria-hidden="true">→</span>
-            </a>
-          </nav>
-        </div>
+              <div className="mt-8">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">{languageLabel}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {languages.map((language) => (
+                    <a
+                      key={language.code}
+                      href={rest ? `/${language.code}/${rest}` : `/${language.code}`}
+                      lang={language.code}
+                      aria-current={language.current ? "page" : undefined}
+                      className={`border px-3.5 py-2 text-[13px] font-medium transition-colors ${
+                        language.current
+                          ? "border-white bg-white text-[#CC0000]"
+                          : "border-white/45 text-white hover:border-white hover:bg-white/10"
+                      }`}
+                    >
+                      {language.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href={cta.href}
+                onClick={() => setOpen(false)}
+                className="mt-8 flex items-center justify-between bg-white px-5 py-4 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#CC0000] transition-colors hover:bg-white/90"
+              >
+                {cta.label}
+                <span aria-hidden="true" className="text-[16px] leading-none">→</span>
+              </a>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

@@ -180,3 +180,60 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; }
     transform: none;
   }
 }
+
+/* ─── Brand loader: diamond tiles pulsing in sequence ─── */
+@keyframes krewDiamondPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 0.28;
+    transform: scale(0.86);
+  }
+}
+
+.krew-diamond {
+  animation: krewDiamondPulse 1.35s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* ─── Mobile menu: full-height drawer sliding in from the right ─── */
+@keyframes krewDrawerIn {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes krewDrawerInRtl {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes krewBackdropIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.krew-drawer {
+  animation: krewDrawerIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[dir="rtl"] .krew-drawer {
+  animation-name: krewDrawerInRtl;
+}
+
+.krew-backdrop {
+  animation: krewBackdropIn 0.24s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .krew-diamond,
+  .krew-drawer,
+  .krew-backdrop {
+    animation: none;
+  }
+}

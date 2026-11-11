@@ -49,6 +49,8 @@ export type Dictionary = {
     changeLanguage: string;
     location: string;
     home: string;
+    close: string;
+    loading: string;
   };
   footer: string;
 };
@@ -147,6 +149,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       changeLanguage: "Change language",
       location: "Location and contact details",
       home: "KREW home",
+      close: "Close menu",
+      loading: "Loading",
     },
     footer: "© KREW. All rights reserved.",
   },
@@ -243,6 +247,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       changeLanguage: "Changer de langue",
       location: "Localisation et coordonnées",
       home: "Accueil KREW",
+      close: "Fermer le menu",
+      loading: "Chargement",
     },
     footer: "© KREW. Tous droits réservés.",
   },
@@ -339,6 +345,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       changeLanguage: "تغيير اللغة",
       location: "الموقع وبيانات الاتصال",
       home: "الصفحة الرئيسية KREW",
+      close: "إغلاق القائمة",
+      loading: "جارٍ التحميل",
     },
     footer: "© KREW. جميع الحقوق محفوظة.",
   },

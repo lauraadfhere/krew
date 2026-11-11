@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { isLocale } from "@/i18n/dictionaries";
+import { dictionaries, isLocale } from "@/i18n/dictionaries";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollButtons from "@/components/ScrollButtons";
+import AppLoader from "@/components/AppLoader";
 
 export default async function LangLayout({
   children,
@@ -16,6 +17,7 @@ export default async function LangLayout({
 
   return (
     <div lang={lang} dir={dir} className="min-h-screen bg-white text-black">
+      <AppLoader label={dictionaries[lang].common.loading} />
       <SiteHeader lang={lang} />
       {children}
       <ScrollButtons />

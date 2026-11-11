@@ -2,6 +2,7 @@ import Image from "next/image";
 import { localeLabels, locales, dictionaries, type Locale } from "@/i18n/dictionaries";
 import MobileMenu from "@/components/MobileMenu";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import MobileSearch from "@/components/MobileSearch";
 
 export default function SiteHeader({ lang }: { lang: Locale }) {
   const t = dictionaries[lang];
@@ -50,6 +51,7 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
         </form>
 
         <div className="flex items-center gap-1.5 sm:gap-2.5">
+          <MobileSearch action={`${base}/products`} label={t.common.search} placeholder={t.common.search} />
           <LanguageSwitcher lang={lang} label={t.common.changeLanguage} />
           <a
             href={`${base}/contact#location`}
@@ -67,6 +69,9 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
             languages={locales.map((code) => ({ code, label: localeLabels[code], current: code === lang }))}
             languageLabel={t.common.changeLanguage}
             cta={{ label: t.hero.secondary, href: `${base}/contact` }}
+            homeHref={base}
+            homeLabel={t.common.home}
+            closeLabel={t.common.close}
           />
         </div>
       </div>
