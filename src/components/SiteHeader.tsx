@@ -24,9 +24,9 @@ export default function SiteHeader({ lang }: { lang: Locale }) {
         </a>
       </div>
       <div className="mx-auto flex min-h-[52px] max-w-[1440px] items-center gap-3 px-5 py-0 sm:px-8 lg:gap-8 lg:px-10">
-        <a href={base} aria-label={t.common.home} className="mr-auto flex shrink-0 items-center gap-3">
-          <Image src="/brand/krew-logo-final.png" alt="KREW" width={2172} height={724} priority className="h-12 w-auto sm:h-14 lg:h-16" />
-          <span className="hidden border-l border-white/40 pl-3.5 text-[11px] font-medium uppercase leading-tight tracking-[0.04em] text-white xl:block">
+        <a href={base} aria-label={t.common.home} className="me-auto flex shrink-0 items-center gap-3">
+          <Image src="/brand/krew-logo-final.png" alt="KREW" width={2172} height={724} priority className="h-9 w-auto sm:h-10 lg:h-11" />
+          <span className="hidden border-s border-white/40 ps-3.5 text-[11px] font-medium uppercase leading-tight tracking-[0.04em] text-white xl:block">
             {t.common.medicalEquipment}
           </span>
         </a>
