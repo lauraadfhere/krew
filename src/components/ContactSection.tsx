@@ -10,7 +10,7 @@ function ContactIcon({ type }: { type: "email" | "phone" | "location" }) {
   };
 
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-[#CC0000]" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       {paths[type]}
     </svg>
   );
@@ -21,45 +21,46 @@ export default function ContactSection({ lang, standalone = false }: { lang: Loc
   const Heading = standalone ? "h1" : "h2";
 
   return (
-    <section id="contact" className="relative isolate overflow-hidden bg-[#2a090b] text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-56 -z-10 h-[520px] w-[520px] rounded-full border border-white/[0.08]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-40 -z-10 h-[360px] w-[360px] rounded-full border border-white/[0.08]" />
+    <section id="contact" className="border-t border-black/10 bg-[#f2f2f2] text-black">
+      <div className="mx-auto max-w-[1270px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-14 lg:gap-20">
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-black/45">
+              {t.contact.details.eyebrow}
+            </p>
 
-      <div className="mx-auto max-w-[980px] px-5 py-16 sm:px-8 md:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto w-full max-w-[600px]">
-          <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-200 sm:text-[11px]">
-            <span aria-hidden="true" className="h-1.5 w-1.5 bg-[#CC0000]" />
-            <span>KREW</span><span className="text-white/35">/</span><span>{t.contact.details.eyebrow}</span>
+            <Heading className="mt-5 text-balance text-[34px] font-light leading-[1.08] tracking-[-0.02em] text-black sm:text-[44px] lg:text-[52px]">
+              {t.contact.title}
+            </Heading>
+            <p className="mt-5 max-w-[46ch] text-pretty text-[15px] leading-7 text-black/65 sm:text-[16px] sm:leading-8">
+              {t.contact.text}
+            </p>
+
+            <dl className="mt-10 grid gap-x-8 gap-y-7 border-t border-black/10 pt-8 sm:grid-cols-2">
+              <div className="min-w-0">
+                <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-black/45">
+                  <ContactIcon type="email" />{t.contact.details.email}
+                </dt>
+                <dd className="mt-2 break-all text-[15px] text-black" dir="ltr">
+                  <a className="transition-colors hover:text-[#CC0000]" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-black/45">
+                  <ContactIcon type="phone" />{t.contact.details.phone}
+                </dt>
+                <dd className="mt-2 text-[15px] text-black" dir="ltr">{t.contact.phone}</dd>
+              </div>
+              <div id="location" className="scroll-mt-28 sm:col-span-2">
+                <dt className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-black/45">
+                  <ContactIcon type="location" />{t.contact.details.support}
+                </dt>
+                <dd className="mt-2 max-w-[42ch] text-[15px] leading-7 text-black/70">{t.contact.details.supportText}</dd>
+              </div>
+            </dl>
           </div>
 
-          <Heading className="mt-4 text-balance text-[34px] font-light leading-[1.05] tracking-[-0.03em] text-white sm:text-[44px] lg:text-[50px]">{t.contact.title}</Heading>
-          <p className="mt-4 text-pretty text-[15px] leading-7 text-white/70 sm:text-[16px] sm:leading-8">{t.contact.text}</p>
-
-          <dl className="mt-8 grid gap-5 border-t border-white/15 pt-6 sm:grid-cols-3">
-            <div className="min-w-0">
-              <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="email" />{t.contact.details.email}
-              </dt>
-              <dd className="mt-1.5 break-all text-[13px] text-white sm:text-[14px]" dir="ltr">
-                <a className="underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
-              </dd>
-            </div>
-            <div>
-              <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="phone" />{t.contact.details.phone}
-              </dt>
-              <dd className="mt-1.5 text-[13px] text-white sm:text-[14px]" dir="ltr">{t.contact.phone}</dd>
-            </div>
-            <div id="location" className="scroll-mt-28">
-              <dt className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/50">
-                <ContactIcon type="location" />{t.contact.details.support}
-              </dt>
-              <dd className="mt-1.5 text-[13px] leading-6 text-white/80 sm:text-[14px]">{t.contact.details.supportText}</dd>
-            </div>
-          </dl>
-
-          <div className="relative mt-10">
-            <div aria-hidden="true" className="absolute -inset-3 border border-white/10 sm:-inset-4" />
+          <div className="md:pt-2">
             <ContactForm labels={t.contact.form} email={t.contact.email} />
           </div>
         </div>
