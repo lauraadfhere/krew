@@ -42,6 +42,7 @@ export type Dictionary = {
     };
   };
   about: { title: string; text: string };
+  faq: { title: string; items: { q: string; a: string }[] };
   common: {
     medicalEquipment: string;
     search: string;
@@ -111,6 +112,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "About KREW",
       text: "KREW supplies hospitals, clinics and laboratories with certified medical devices and reliable hardware equipment. From choosing the right device to installation, maintenance and training, our team helps healthcare facilities build dependable equipment programs around the needs of their people.",
     },
+    faq: {
+      title: "FAQ",
+      items: [
+        {
+          q: "I have just purchased KREW equipment. How do I activate the service and warranty plan?",
+          a: "Contact our support team with your order number and the serial numbers of the devices. We register the equipment, confirm the warranty period and schedule the first preventive maintenance visit with your facility.",
+        },
+        {
+          q: "Is KREW support free of charge?",
+          a: "Remote advice by phone or email is included with every purchase. On-site visits, spare parts and out-of-warranty repairs are always quoted and approved before any work begins.",
+        },
+        {
+          q: "I have a question about an order — where do I find the answer?",
+          a: "Your account manager can confirm delivery dates, invoices and order status. For anything urgent, call the support line listed on our contact page and quote your order number.",
+        },
+        {
+          q: "Why do I need an account to request a quote?",
+          a: "Quotes are tied to your facility's pricing and equipment history. An account keeps your quotes, delivery documents and service records in one place, so repeat orders take minutes rather than days.",
+        },
+        {
+          q: "How long do delivery and installation take?",
+          a: "Stocked devices usually ship within five business days. Configured or imported equipment takes three to six weeks. Installation and calibration are scheduled directly with your team once the order is confirmed.",
+        },
+        {
+          q: "Do you train clinical and technical staff?",
+          a: "Yes. Every installation includes a hands-on session for the staff who will use the device, and refresher training can be booked at any time through our services team.",
+        },
+      ],
+    },
     common: {
       medicalEquipment: "Medical equipment",
       search: "Search",
@@ -178,6 +208,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
       title: "À propos de KREW",
       text: "KREW fournit aux hôpitaux, cliniques et laboratoires des dispositifs médicaux certifiés et des équipements matériels fiables. Du choix de l'appareil adapté à l'installation, la maintenance et la formation, notre équipe aide les établissements de santé à bâtir des programmes d'équipement fiables.",
     },
+    faq: {
+      title: "FAQ",
+      items: [
+        {
+          q: "Je viens d'acheter des équipements KREW. Comment activer le contrat de service et la garantie ?",
+          a: "Contactez notre équipe d'assistance avec votre numéro de commande et les numéros de série des appareils. Nous enregistrons le matériel, confirmons la durée de garantie et planifions la première visite de maintenance préventive.",
+        },
+        {
+          q: "L'assistance KREW est-elle gratuite ?",
+          a: "Le conseil à distance par téléphone ou par e-mail est inclus avec chaque achat. Les visites sur site, les pièces détachées et les réparations hors garantie font toujours l'objet d'un devis approuvé avant toute intervention.",
+        },
+        {
+          q: "J'ai une question sur une commande — où trouver la réponse ?",
+          a: "Votre chargé de compte peut confirmer les dates de livraison, les factures et l'état de la commande. Pour toute urgence, appelez la ligne d'assistance indiquée sur notre page de contact en précisant votre numéro de commande.",
+        },
+        {
+          q: "Pourquoi créer un compte pour demander un devis ?",
+          a: "Les devis dépendent des tarifs et de l'historique d'équipement de votre établissement. Un compte conserve vos devis, vos documents de livraison et vos rapports d'intervention au même endroit.",
+        },
+        {
+          q: "Quels sont les délais de livraison et d'installation ?",
+          a: "Les appareils en stock partent généralement sous cinq jours ouvrés. Les équipements configurés ou importés demandent trois à six semaines. L'installation et l'étalonnage sont planifiés directement avec votre équipe dès la confirmation de la commande.",
+        },
+        {
+          q: "Formez-vous le personnel clinique et technique ?",
+          a: "Oui. Chaque installation comprend une séance pratique pour le personnel qui utilisera l'appareil, et des formations de rappel peuvent être réservées à tout moment auprès de notre équipe services.",
+        },
+      ],
+    },
     common: {
       medicalEquipment: "Équipement médical",
       search: "Rechercher",
@@ -244,6 +303,35 @@ export const dictionaries: Record<Locale, Dictionary> = {
     about: {
       title: "من نحن",
       text: "توفّر KREW للمستشفيات والعيادات والمختبرات أجهزة طبية معتمدة ومعدات عتادية موثوقة. من اختيار الجهاز المناسب إلى التركيب والصيانة والتدريب، يساعد فريقنا المنشآت الصحية على بناء برامج معدات موثوقة.",
+    },
+    faq: {
+      title: "الأسئلة الشائعة",
+      items: [
+        {
+          q: "اشتريت معدات KREW مؤخرًا. كيف أفعّل خطة الخدمة والضمان؟",
+          a: "تواصل مع فريق الدعم مع رقم الطلب والأرقام التسلسلية للأجهزة. نسجّل المعدات ونؤكد مدة الضمان ونحدد موعد أول زيارة صيانة وقائية لمنشأتك.",
+        },
+        {
+          q: "هل دعم KREW مجاني؟",
+          a: "الاستشارة عن بُعد عبر الهاتف أو البريد الإلكتروني مشمولة مع كل عملية شراء. أما الزيارات الميدانية وقطع الغيار والإصلاحات خارج الضمان فتُقدَّر بعرض سعر يُعتمد قبل بدء أي عمل.",
+        },
+        {
+          q: "لدي سؤال حول طلب — أين أجد الإجابة؟",
+          a: "يمكن لمدير حسابك تأكيد مواعيد التسليم والفواتير وحالة الطلب. وللحالات العاجلة اتصل بخط الدعم المذكور في صفحة الاتصال مع ذكر رقم الطلب.",
+        },
+        {
+          q: "لماذا أحتاج إلى حساب لطلب عرض سعر؟",
+          a: "ترتبط عروض الأسعار بأسعار منشأتك وسجل معداتها. ويحفظ الحساب عروض الأسعار ومستندات التسليم وسجلات الخدمة في مكان واحد.",
+        },
+        {
+          q: "كم يستغرق التسليم والتركيب؟",
+          a: "تُشحن المعدات المتوفرة عادةً خلال خمسة أيام عمل، بينما تستغرق المعدات المُهيأة أو المستوردة من ثلاثة إلى ستة أسابيع. ويُحدد موعد التركيب والمعايرة مباشرة مع فريقك بعد تأكيد الطلب.",
+        },
+        {
+          q: "هل تدرّبون الكوادر السريرية والفنية؟",
+          a: "نعم. يشمل كل تركيب جلسة تدريب عملية للكوادر التي ستستخدم الجهاز، ويمكن حجز تدريب تنشيطي في أي وقت عبر فريق الخدمات.",
+        },
+      ],
     },
     common: {
       medicalEquipment: "معدات طبية",

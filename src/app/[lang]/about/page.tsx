@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { dictionaries, isLocale, locales } from "@/i18n/dictionaries";
+import FaqSection from "@/components/FaqSection";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -11,9 +12,19 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
   const t = dictionaries[lang];
 
   return (
-    <main className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 md:py-20 lg:px-10">
-      <h1 className="text-balance text-[30px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[36px] lg:text-[40px]">{t.about.title}</h1>
-      <p className="mt-6 max-w-3xl border-l-2 border-[#CC0000]/25 pl-5 text-[16px] leading-8 sm:text-[17px] sm:leading-9">{t.about.text}</p>
+    <main className="bg-white">
+      <section>
+        <div className="mx-auto max-w-[900px] px-5 pb-4 pt-16 sm:px-8 md:pt-20">
+          <h1 className="text-center text-[34px] font-light leading-[1.1] tracking-[-0.01em] text-black sm:text-[42px] lg:text-[48px]">
+            {t.about.title}
+          </h1>
+          <p className="mx-auto mt-8 max-w-[62ch] text-pretty text-center text-[16px] leading-8 text-black/65 sm:text-[17px] sm:leading-9">
+            {t.about.text}
+          </p>
+        </div>
+      </section>
+
+      <FaqSection title={t.faq.title} items={t.faq.items} />
     </main>
   );
 }

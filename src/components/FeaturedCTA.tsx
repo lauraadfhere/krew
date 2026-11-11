@@ -7,7 +7,7 @@ export default function FeaturedCTA() {
         {/* ─── Left: Rounded image ─── */}
         <div className="relative mx-auto w-full max-w-[480px]">
           {/* Rounded container matching OMRON's pill/oval shape */}
-          <div className="overflow-hidden rounded-[40%_4%_4%_40%] shadow-xl sm:rounded-[45%_4%_4%_45%]">
+          <div className="overflow-hidden rounded-[40%_4%_4%_40%] sm:rounded-[45%_4%_4%_45%]">
             <img
               src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"
               alt="Healthcare professional using KREW medical technology"
@@ -16,7 +16,7 @@ export default function FeaturedCTA() {
             />
           </div>
           {/* Floating accent dot */}
-          <div aria-hidden="true" className="absolute -bottom-3 -right-3 h-16 w-16 rounded-full bg-[#CC0000] shadow-lg" />
+          <div aria-hidden="true" className="absolute -bottom-3 -right-3 h-16 w-16 rounded-full bg-[#CC0000]" />
         </div>
 
         {/* ─── Right: Text content ─── */}
