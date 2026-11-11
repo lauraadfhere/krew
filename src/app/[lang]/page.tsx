@@ -153,7 +153,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         {/* ─── Middle: Logo + Social icons row ─── */}
         <div className="border-t border-white/20">
           <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-7 sm:px-8 lg:px-10">
-            <Image src="/brand/krew-logo.svg" alt="KREW" width={150} height={56} className="h-9 w-auto brightness-0 invert" />
+            <Image src="/brand/krew-logo-final.png" alt="KREW" width={2172} height={724} className="h-10 w-auto" />
             <div className="flex items-center gap-3">
               {/* Facebook */}
               <a href="#" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white text-[#003b73] transition-opacity hover:opacity-80">
